@@ -1,0 +1,181 @@
+O n-ésimo momento \sigma_u ^n de uma distribuição u é definido por:
+
+\sigma_u ^n = \left<(u - <u>)^n \right>
+
+Queremos achar o terceiro e quarto momentos da distribuição binomial. Neste caso, teremos:
+
+\sigma_{N_1} ^3 = \left<(N_1 - <N_1>)^3 \right>
+
+\sigma_{N_1} ^4 = \left<(N_1 - <N_1>)^4 \right>
+
+Daqui, basta fazermos o trabalho braçal de expandir os binômios e aplicar a linearidade da média [propriedade que também foi demonstrada no exercício anterior].
+
+Vamos começar com o terceiro momento, em que temos:
+
+\sigma_{N_1} ^3 = \left<N_1 ^3 - 3 N_1 ^2 <N_1> + 3 N_1 <N_1>^2 - <N_1>^3 \right>
+
+\sigma_{N_1} ^3 = <N_1 ^3> - 3 <N_1 ^2 <N_1>> + 3 <N_1 <N_1>^2> - <<N_1>^3>
+
+\sigma_{N_1} ^3 = <N_1 ^3> - 3 <N_1 ^2> <N_1> + 3 <N_1> <N_1>^2 - <N_1>^3
+
+\sigma_{N_1} ^3 = <N_1 ^3> - 3 <N_1 ^2> <N_1> + 3 <N_1>^3 - <N_1>^3
+
+\sigma_{N_1} ^3 = <N_1 ^3> - 3 <N_1 ^2> <N_1> + 2 <N_1>^3
+
+Daqui, quase todos são velhos conhecidos nossos da segunda questão. Precisamos conhecer apenas <N_1 ^3>, que é dado por:
+
+<N_1 ^3> = \sum_{N_1 = 1} ^{N} N_1^3 P_N (N_1)
+
+Como mostramos no exercício anterior, isso será dado por:
+
+<N_1 ^3> = \left(p \frac{\partial }{\partial p} \right)^3 (p+q)^N
+
+De modo geral, teremos que:
+
+<N_1 ^n> = \left(p \frac{\partial }{\partial p} \right)^n (p+q)^N
+
+Com mais um pouco de trabalho braçal então, obtemos:
+
+<N_1 ^3> = \left(p \frac{\partial }{\partial p} \right)^2 pN(p+q)^{N-1}
+
+<N_1 ^3> = p \frac{\partial }{\partial p} \left[pN(p+q)^{N-1} + p^2 N(N-1)(p+q)^{N-2} \right]
+
+<N_1 ^3> = pN(p+q)^{N-1} + p^2 N(N-1)(p+q)^{N-2} + 2 p^2 N(N-1)(p+q)^{N-2} + p^3 N(N-1)(N-2)(p+q)^{N-3}
+
+<N_1 ^3> = pN(p+q)^{N-1} + 3 p^2 N(N-1)(p+q)^{N-2} + p^3 N(N-1)(N-2)(p+q)^{N-3}
+
+<N_1 ^3> = pN + 3 p^2 N(N-1) + p^3 N(N-1)(N-2)
+
+<N_1 ^3> = pN + p^2 N(N-1)[3 + p(N-2)] = pN\left\{1 + p (N-1)[3 + p(N-2)]\right\}
+
+<N_1 ^3> = p N (N^2 p^2 - 3Np^2 + 2 p^2 + 3Np - 3p + 1)
+
+Vimos anteriormente que:
+
+<N_1 ^2> = pN + p^2 N(N-1)
+
+Além de:
+
+<N_1> = pN
+
+Substituindo estes valores na expansão, obtemos:
+
+\sigma_{N_1} ^3 = pN + 3 p^2 N(N-1) + p^3 N(N-1)(N-2) - 3 \left(pN + p^2 N(N-1)\right) pN + 2 \left(pN\right)^3
+
+\sigma_{N_1} ^3 = pN + 3 p^2 N(N-1) + p^3 N(N-1)(N-2) - 3 \left(p^2 N^2 + p^3 N^2(N-1)\right) + 2 \left(p^3 N^3\right)
+
+\sigma_{N_1} ^3 = pN + p^2 N[3(N-1) - 3N] + p^3 N[(N-1)(N-2) - 3 N(N-1) + 2 N^2]
+
+\sigma_{N_1} ^3 = pN + p^2 N(3N - 3 - 3N) + p^3 N(N^2 - 2N - N + 2 - 3 N^2 + 3 N + 2 N^2)
+
+\sigma_{N_1} ^3 = pN - 3p^2 N + p^3 N(N^2 - 3N + 2 - 3 N^2 + 3N + 2 N^2)
+
+\sigma_{N_1} ^3 = pN - 3p^2 N + 2 p^3 N
+
+\sigma_{N_1} ^3 = pN(1 - 3p + 2 p^2) = pN(1-p)(1-2p) = Npq(1 - 2p)
+
+\sigma_{N_1} ^3 = Npq(q - p)
+
+\sigma_{N_1} ^3 = \sigma_{N_1} ^2 (q - p)
+
+Para o quarto momento, faremos o mesmo processo:
+
+\sigma_{N_1} ^4 = \left<(N_1 - <N_1>)^4 \right>
+
+\sigma_{N_1} ^4 = \left<N_1 ^4 - 4 N_1 ^3 <N_1> + 6 N_1 ^2 <N_1>^2 - 4 N_1 <N_1>^3 + <N_1>^4 \right>
+
+\sigma_{N_1} ^4 = <N_1 ^4> - <4 N_1 ^3 <N_1>> + <6 N_1 ^2 <N_1>^2> - <4 N_1 <N_1>^3> + <<N_1>^4>
+
+\sigma_{N_1} ^4 = <N_1 ^4> - 4 <N_1 ^3> <N_1> + 6 <N_1 ^2> <N_1>^2 - 4 <N_1> <N_1>^3 + <N_1>^4
+
+\sigma_{N_1} ^4 = <N_1 ^4> - 4 <N_1 ^3> <N_1> + 6 <N_1 ^2> <N_1>^2 - 4 <N_1>^4 + <N_1>^4
+
+\sigma_{N_1} ^4 = <N_1 ^4> - 4 <N_1 ^3> <N_1> + 6 <N_1 ^2> <N_1>^2 - 3 <N_1>^4
+
+Conhecemos todo o mundo exceto <N_1 ^4>. Vamos "trocar umas continhas" pra conhecer ele melhor:
+
+<N_1 ^4> = \left(p \frac{\partial }{\partial p} \right)^4 (p+q)^N
+
+<N_1 ^4> = p \frac{\partial }{\partial p} \left[ pN(p+q)^{N-1} + 3 p^2 N(N-1)(p+q)^{N-2} + p^3 N(N-1)(N-2)(p+q)^{N-3} \right]
+
+<N_1 ^4> = pN(p+q)^{N-1} + p^2 N(N-1)(p+q)^{N-2} + 6 p^2 N(N-1)(p+q)^{N-2} + 3 p^3 N(N-1)(N-2)(p+q)^{N-3} + 3 p^3 N(N-1)(N-2)(p+q)^{N-3} + p^4 N(N-1)(N-2)(N-3)(p+q)^{N-3}
+
+<N_1 ^4> = pN + p^2 N(N-1) + 6 p^2 N(N-1) + 3 p^3 N(N-1)(N-2) + 3 p^3 N(N-1)(N-2) + p^4 N(N-1)(N-2)(N-3)
+
+<N_1 ^4> = pN + 7 p^2 N(N-1) + 6 p^3 N(N-1)(N-2) + p^4 N(N-1)(N-2)(N-3)
+
+<N_1 ^4> = pN\left\{1 + p(N-1)[7 + 6 p(N-2) + p^2(N-2)(N-3)]\right\}
+
+<N_1 ^4> = pN(N^3 p^3 - 6 N^2 p^3 + 11Np^3 - 6p^3 + 6N^2 p^2 - 18N p^2 + 12p^2 + 7Np - 7p + 1)
+
+Agora que o conhecemos, vamos substituir em \sigma_{N_1} ^4 junto com os outros valores que conhecemos e, pelos poderes de Grayskull, expandir tudo e simplificar no braço:
+
+\sigma_{N_1} ^4 = p N (N^3 p^3 - 6 N^2 p^3 + 11Np^3 - 6p^3 + 6N^2 p^2 - 18N p^2 + 12p^2 + 7Np - 7p + 1) - 4 p N (N^2 p^2 - 3Np^2 + 2 p^2 + 3Np - 3p + 1) (p N) + 6 p N (1 + p N (N-1))(p N)^2 - 3 (p N)^4
+
+\sigma_{N_1} ^4 = p N (p^3 N^3 - 6 p^3 N^2 + 11 p^3 N - 6 p^3 + 6 p^2 N^2 - 18 p^2 N + 12 p^2 + 7 p N - 7 p + 1) - 4 p^2 N^2 (p^2 N^2 - 3 p^2 N + 2 p^2 + 3 p N - 3 p + 1) + 6 p^3 N^3 (1 + p (N - 1)) - 3 p^4 N^4
+
+\sigma_{N_1} ^4 = p^4 N^4 - 6 p^4 N^3 + 11 p^4 N^2 - 6 p^4 N + 6 p^3 N^3 - 18 p^3 N^2 + 12 p^3 N + 7 p^2 N^2 - 7 p^2 N + p N - 4 p^2 N^2 (N^2 p^2 - 3 N p^2 + 2 p^2 + 3 N p - 3 p + 1) + 6 N^3 p^3 [1 + p(N-1)] - 3 N^4 p^4
+
+\sigma_{N_1} ^4 = p^4 N^4 - 6 p^4 N^3 + 11 p^4 N^2 - 6 p^4 N + 6 p^3 N^3 - 18 p^3 N^2 + 12 p^3 N + 7 p^2 N^2 - 7 p^2 N + p N - 4 p^4 N^4 + 12 p^4 N^3 - 8 p^4 N^2 - 12 p^3 N^3 + 12 p^3 N^2 - 4 p^2 N^2 + 6 N^3 p^3 [1 + p(N-1)] - 3 N^4 p^4
+
+\sigma_{N_1} ^4 = p^4 N^4 - 6 p^4 N^3 + 11 p^4 N^2 - 6 p^4 N + 6 p^3 N^3 - 18 p^3 N^2 + 12 p^3 N + 7 p^2 N^2 - 7 p^2 N + p N - 4 p^4 N^4 + 12 p^4 N^3 - 8 p^4 N^2 - 12 p^3 N^3 + 12 p^3 N^2 - 4 p^2 N^2 + 6 p^3 N^3 + 6 p^4 N^3 (N-1) - 3 N^4 p^4
+
+\sigma_{N_1} ^4 = p^4 N^4 - 6 p^4 N^3 + 11 p^4 N^2 - 6 p^4 N + 6 p^3 N^3 - 18 p^3 N^2 + 12 p^3 N + 7 p^2 N^2 - 7 p^2 N + p N - 4 p^4 N^4 + 12 p^4 N^3 - 8 p^4 N^2 - 12 p^3 N^3 + 12 p^3 N^2 - 4 p^2 N^2 + 6 p^3 N^3 + 6 p^4 N^4 - 6 p^4 N^3 - 3 N^4 p^4
+
+\sigma_{N_1} ^4 = p^4 N^4 - 4 p^4 N^4 + 6 p^4 N^4 - 3 p^4 N^4 - 6 p^4 N^3 + 12 p^4 N^3 - 6 p^4 N^3 + 11 p^4 N^2 - 8 p^4 N^2 - 6 p^4 N + 6 p^3 N^3 - 12 p^3 N^3 + 6 p^3 N^3 - 18 p^3 N^2 + 12 p^3 N^2 + 12 p^3 N + 7 p^2 N^2 - 4 p^2 N^2 - 7 p^2 N + p N
+
+\sigma_{N_1} ^4 = 3 p^4 N^2 - 6 p^4 N - 6 p^3 N^2 + 12 p^3 N + 3 p^2 N^2 - 7 p^2 N + p N
+
+\sigma_{N_1} ^4 = p N \left( 3 p^3 N - 6 p^3 - 6 p^2 N + 12 p^2 + 3 p N - 7 p + 1 \right)
+
+\sigma_{N_1} ^4 = p N \left[1 - p + 3p(p^2 N - 2 p^2 - 2 p N + 4 p + N - 2) \right]
+
+\sigma_{N_1} ^4 = p N \left\{1 - p + 3p[p^2 (N-2) - 2 p(N-2) + (N-2)] \right\}
+
+\sigma_{N_1} ^4 = p N \left\{1 - p + 3p(N-2)[p^2 - 2 p + 1] \right\}
+
+\sigma_{N_1} ^4 = p N \left[(1-p) + 3p(N-2)(1-p)^2 \right]
+
+\sigma_{N_1} ^4 = p N (1-p) \left[1 + 3p(N-2)(1-p) \right]
+
+\sigma_{N_1} ^4 = N p q \left[1 + 3(N-2)pq\right] = \sigma_{N_1} ^2 \left[1 + 3(N-2)pq\right]
+
+Ou ainda um extra:
+
+\sigma_{N_1} ^4 = \sigma_{N_1} ^2 \left[1 + 3(\sigma_{N_1} ^2 - 2pq)\right]
+
+Agora pare um momento para admirar esse resultado tão pequeno e tão bonito que partiu de um monstro tão grande. Agora vamos discutir os resultados rapidamente.
+
+Desde o laboratório de Física 1, aprendemos que \sigma_{N_1} ^2 é a variância, que é uma medida de dispersão da distribuição, ou seja, nos diz o quanto uma distribuição "falha" em estar "centrada" no valor esperado, por assim dizer. Quanto maior este valor, mais largo é o gráfico.
+
+Daqui, corremos atrás de outros materiais sobre distribuições para aprender que \sigma_{N_1} ^3 ajuda a medir, de certa forma, o grau de assimetria no gráfico da distribuição, ou seja, o quanto a distribuição "falha" em ser simétrica, enquanto \sigma_{N_1} ^4 ajuda a medir a curtose, ou seja, grau de "achatamento" de uma distribuição.
+
+Sabendo disso, podemos ver que, para N grande, ocorre que:
+
+\sigma_{N_1} ^3 = Npq(q - p) \approx N
+
+Assim como: 
+
+\sigma_{N_1} ^2 = Npq \approx N
+
+A medida de assimetria é definida como:
+
+s = \frac{\sigma_{N_1} ^3}{(\sigma_{N_1} ^2)^{\frac{3}{2}}
+
+Nesse limite, temos que:
+
+s \approx \frac{1}{N} \approx 0
+
+O que quer dizer que nesse caso a distribuição binomial tende a ser simétrica, assim como a distribuição Gaussiana. Por sua vez, temos a curtose definida como:
+
+k = \frac{\sigma_{N_1} ^4}{(\sigma_{N_1} ^2)^2} - 3
+
+Para o caso de N grande, temos:
+
+k = \frac{N p q \left[1 + 3(N-2)pq\right]}{(N p q)^2} - 3
+
+k = \frac{1 + 3(N-2)pq}{(N p q)} - 3 \approx \frac{3Npq}{N p q)}
+
+k \approx 3 - 3 = 0
+
+Que é o mesmo valor da curtose de uma Gaussiana. Esses resultados indicam que, para N grande, a distribuição Gaussiana, que deduzimos na questão anterior, é uma boa aproximação para a distribuição binomial.

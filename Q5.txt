@@ -1,0 +1,170 @@
+1. O deslocamento médio à partir da origem após N passos será dado por:
+
+<x> = \left<\sum_{j=1} ^{N} s_j \right>
+
+<x> = \sum_{j=1} ^{N} <s_j>
+
+Note que:
+
+<s_j> = <s>
+
+Então:
+
+<x> = \sum_{j=1} ^{N} <s> = N <s>
+
+Para uma distribuição contínua, nossa média é definida como:
+
+<s> = \int_{-\infty} ^{\infty} s \omega (s) ds
+
+<s> = (2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} s \exp \left[- \frac{(s - l)^2}{2 \sigma^2} \right] ds
+
+Como usual para esse tipo de integral, faremos:
+
+y = s - l \to dy = ds
+
+O que nos dá:
+
+<s> = (2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} (y + l) \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy
+
+<s> = (2 \pi \sigma ^2)^{-\frac{1}{2}} \left\{ \int_{-\infty} ^{\infty} y \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy + l \int_{-\infty} ^{\infty} exp \left[- \frac{y^2}{2 \sigma^2} \right] dy \right\}
+
+A segunda integral, como mostrei na 2ª questão, vai resultar em:
+
+\int_{-\infty} ^{\infty} \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy = \sqrt{2 \pi \sigma^2}
+
+Para a primeira integral, primeiro note que:
+
+\frac{d}{dy} \exp \left[- \frac{y^2}{2 \sigma^2} \right] = - \frac{y}{\sigma^2} \exp \left[- \frac{y^2}{2 \sigma^2} \right]
+
+Substituindo isso na primeira integral, ficamos então com:
+
+\int_{-\infty} ^{\infty} y \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy = - \sigma^2 \int_{-\infty} ^{\infty} \frac{d}{dy} \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy
+
+= - \sigma^2 \exp \left[- \frac{y^2}{2 \sigma^2} \right]_{-\infty} ^{\infty} = - \sigma^2 (0 - 0) = 0
+
+E assim, ficamos apenas com o resultado da segunda, ou seja:
+
+<s> = (2 \pi \sigma ^2)^{-\frac{1}{2}} \left\{\sqrt{2 \pi \sigma^2} l\right\} = l
+
+Ou seja:
+
+<x> = N <s> = Nl
+
+2. Como vimos anteriormente, o devio quadrático médio será:
+
+\sigma_x ^2 = \left<(x - <x>)^2\right>
+
+\sigma_x ^2 = \left< \left(\sum_{i=1} ^{N} s_i - \left<\sum_{j=1} ^{N} s_j \right>\right)^2 \right>
+
+\sigma_x ^2 = \left< \left(\sum_{i=1} ^{N} s_i - \sum_{i=1} ^{N} \left< s \right>\right)^2 \right>
+
+\sigma_x ^2 = \left< \left[\sum_{i=1} ^{N} (s_i - <s>)\right]^2 \right>
+
+\sigma_x ^2 = \left< \left[\sum_{i=1} ^{N} (s_i - <s>)\right] \left[\sum_{j=1} ^{N} (s_j - <s>)\right] \right>
+
+\sigma_x ^2 = \left< \sum_{i=1} ^{N} (s_i - <s>)^2 + \sum_{j \neq k} (s_j - <s>)(s_k - <s>) \right>
+
+\sigma_x ^2 = \left< \sum_{i=1} ^{N} (s_i - <s>)^2 \right> + \left< \sum_{j \neq k} (s_j - <s>)(s_k - <s>) \right>
+
+\sigma_x ^2 = \sum_{i=1} ^{N} \sigma_s ^2 + \sum_{j \neq k} \left< (s_j - <s>)(s_k - <s>) \right>
+
+Vamos assumir que s_i e s_j são variáveis indepentes. Se isso for verdade, então:
+
+\left< (s_j - <s>)(s_k - <s>) \right> = \int_{-\infty} ^{\infty} \int_{-\infty} ^{\infty} \left(s_j - <s>)\left(s_k - <s>) \omega (s_j) \omega (s_k) ds_j ds_k
+
+\left< \left(s_j - <s>)\left(s_k - <s>) \right> = \left[ \int_{-\infty} ^{\infty} \left(s_j - <s>) \omega (s_j) ds_j \right]\left[ \int_{-\infty} ^{\infty} \left(s_k - <s>) \omega (s_k) ds_k \right]
+
+\left< (s_j - <s>)(s_k - <s>) \right> = \left< (s_j - <s>) \right>\left< (s_k - <s>) \right>
+
+E como sabemos:
+
+\left< (s - <s>) \right> = <s> - <s> = 0
+
+Portanto:
+
+\left< (s_j - <s>)(s_k - <s>) \right> = \left< (s_j - <s>) \right>\left< (s_k - <s>) \right> = 0
+
+Logo:
+
+\sigma_x ^2 = \sum_{i=1} ^{N} \sigma_s ^2 = N \sigma_s ^2
+
+Por sua vez, como vimos na questão 2, temos que:
+
+\sigma_s ^2 = <s^2> - <s>^2
+
+Precisamos saber quem é <s^2>, que é dado por:
+
+<s^2> = (2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} s^2 \exp \left[- \frac{(s - l)^2}{2 \sigma^2} \right] ds
+
+Façamos primeiramente s - l = y \to ds = dy. Portanto:
+
+<s^2> = (2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} (y + l)^2 \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy
+
+<s^2> = (2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} (y^2 + yl + l^2) \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy
+
+<s^2> = (2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} y^2 \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy + (2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} yl \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy + (2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} l^2 \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy
+
+A última integral vai dar:
+
+(2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} l^2 \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy = l^2
+
+Como vimos no ponto 1 dessa questão, a segunda integral vai zerar, ou seja:
+
+(2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} yl \exp \left[- \frac{y^2}{2 \sigma^2} \right] dy = 0
+
+Por fim, a primeira integral. Para ela, precisamos notar que:
+
+\frac{d^2}{dy^2} \exp \left[- \frac{y^2}{2 \sigma^2} \right] = \frac- {d}{dy} \left[ \frac{y}{\sigma^2} \exp \left[- \frac{y^2}{2 \sigma^2} \right] \right]
+
+= - \frac{1}{\sigma^2} \exp \left[- \frac{y^2}{2 \sigma^2} \right] + \frac{y^2}{\sigma^4} \exp \left[- \frac{y^2}{2 \sigma^2} \right]
+
+Ou seja, podemos dizer que:
+
+\exp \left[- \frac{y^2}{2 \sigma^2} \right] = \sigma^4 \frac{d^2}{dy^2} \exp \left[- \frac{y^2}{2 \sigma^2} \right] + \sigma^2 \exp \left[- \frac{y^2}{2 \sigma^2} \right]
+
+Substituindo na primeira integral, ficamos com:
+
+(2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} y^2 \exp \left[- \frac{y^2}{2 \sigma^2} \right] ds = (2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} \left[ sigma^4 \frac{d^2}{dy^2} \exp \left(- \frac{y^2}{2 \sigma^2} \right) + \sigma^2 \exp \left(- \frac{y^2}{2 \sigma^2} \right) \right] dy
+
+= (2 \pi \sigma ^2)^{-\frac{1}{2}} \left[ sigma^4 \int_{-\infty} ^{\infty} \frac{d^2}{dy^2} \exp \left(- \frac{y^2}{2 \sigma^2} \right) dy + \sigma^2 \int_{-\infty} ^{\infty} \exp \left(- \frac{y^2}{2 \sigma^2} \right) \right] dy
+
+Novamente, a segunda integral nos dá: 
+
+\int_{-\infty} ^{\infty} \exp \left(- \frac{y^2}{2 \sigma^2} \right) = (2 \pi \sigma ^2)^{\frac{1}{2}}
+
+Enquanto a primeira nos dá:
+
+\int_{-\infty} ^{\infty} \frac{d^2}{dy^2} \exp \left(- \frac{y^2}{2 \sigma^2} \right) dy = \left[\frac{d}{dy} \exp \left(- \frac{y^2}{2 \sigma^2} \right) \right]_{-infty} ^{\infty}
+
+= \left[- \frac{y}{\sigma^2} \exp \left(- \frac{y^2}{2 \sigma^2} \right) \right]_{-\infty} ^{\infty}
+
+Pela Regra de L'Hopital, ambos os limites culminam em:
+
+\lim_{y \to \infty} \left[- \frac{y}{\sigma^2} \exp \left(- \frac{y^2}{2 \sigma^2} \right] = \lim_{y \to \infty} \left[- \frac{y}{\sigma^2 \exp \left(\frac{y^2}{2 \sigma^2}} \right]
+= \lim_{y \to \infty} \left[- \frac{1}{y \exp \left(\frac{y^2}{2 \sigma^2}} \right] = 0
+
+Portanto:
+
+\int_{-\infty} ^{\infty} \frac{d^2}{dy^2} \exp \left(- \frac{y^2}{2 \sigma^2} \right) dy = 0
+
+Então a primeira integral resulta em:
+
+(2 \pi \sigma ^2)^{-\frac{1}{2}} \int_{-\infty} ^{\infty} y^2 \exp \left[- \frac{y^2}{2 \sigma^2} \right] ds = (2 \pi \sigma ^2)^{-\frac{1}{2}} \sigma^2 (2 \pi \sigma ^2)^{\frac{1}{2}} = \sigma^2
+
+Ou seja:
+
+<s^2> = \sigma^2 + l^2
+
+Portanto: 
+
+\sigma_s ^2 = <s^2> - <s>^2 = \sigma^2 + l^2 - l^2 = \sigma^2
+
+E, por fim:
+
+\sigma_x ^2 = N \sigma ^2
+
+3. Para N grande, usando o processo que deduzimos para a Gaussiana no exercício 2 (mas claro, nos poupando uma pouco do trabalho extra de deduzir de novo as coisas, expandir em série e tal, por favorzinho, Professora, acabei de sair da prova de Métodos e só quero descansar um pouquinho :'c ) a forma da Gaussiana será:
+
+P_G (x) = (2 \pi N \sigma ^2)^{-\frac{1}{2}} \exp \left[ - \frac{(x - Nl)^2}{2 N \sigma ^2} \right]
+
+4. Embora desenhado de forma simples (sim, foi no paint, por favor releve os traços terríveis), imagino que é essa a "intuição" por trás do que é pedido nessa parte da questão. A curva vermelha representa a Gaussiana que tinhamos antes, enquanto a curva preta representa a curva com igual probabilidade para os pontos no intervalo entre l-b e l+b. Claramente a curva da distribuição deve mudar em todo o domínio, quando comparado com a Gaussiana anterior, para que as áreas sob os gráficos sejam iguais. A gaussiana anterior certamente seria mais "fina" e, portanto, o desvio da nova distribuição certamente será maior que o desvio da Gaussiana. Espera-se, no entanto, que a média de ambas seja a mesma, no ponto l (ou no caso de muitos passos, no ponto Nl).

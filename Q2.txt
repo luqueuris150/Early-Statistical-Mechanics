@@ -1,0 +1,268 @@
+1. Gráfico do item 1, PN x N1/N
+
+
+2. Vamos começar partindo da distribuição binomial:
+
+P_N (N_1) = \frac{N!}{N_1! N_2!} p^{N_1} q^{N_2}
+
+Onde N_2 = N - N_1 e q = 1 - p.
+
+A média de uma função é definida como a soma ponderada dos valores possíveis que ela pode assumir (que para funções contínuas se torna uma integral, o que ainda não é o nosso caso ainda). Assim, o valor médio de N_1, ou seja, <N_1>, será dado por:
+
+<N_1> = \sum_{N_1 = 0} ^{N} \ N_1 P_N(N_1)
+
+Ou seja,
+
+<N_1> = \sum_{N_1 = 0} ^{N} \ N_1 \frac{N!}{N_1!(N-N_1)!} p^{N_1} q^{N-N_1}
+
+Mas se derivarmos a distribuição com relação a p, obtemos:
+
+\frac{\partial}{\partial p} P_N (N_1) = N_1 \frac{N!}{N1! N2!} p^{N_1 - 1} q^{N_2}
+
+O que, por sua vez, implica em:
+
+p \frac{\partial}{\partial p} P_N (N_1) = N_1 \frac{N!}{N_1!(N-N_1)!} p^{N_1} q^{N-N_1}
+
+Substituindo essa relação na média, obtemos:
+
+<N_1> = \sum_{N_1 = 0} ^{N} \ p \frac{\partial}{\partial p} P_N (N_1)
+
+<N_1> = p \frac{\partial}{\partial p} \sum_{N_1 = 0} ^{N} \ P_N (N_1)
+
+Onde usamos a linearidade da derivada para "retirá-la" da soma. Agora vamos lembrar da expansão dos Binômios de Newton (lá da 7ª série, acredito eu, 1900 e antigamente):
+
+(p+q)^N = \sum_{N_1 = 0} ^{N} \ \frac{N!}{N1!(N - N_1)!} p^{N_1} q^{N-N_1} = \sum_{N_1 = 0} ^{N} \ P_N (N_1)
+
+E a derivada desse negócio é:
+
+\frac{\partial}{\partial p} (p+q)^N = N(p+q)^{N-1}
+
+Note que o último termo da expansão. Agora vamos substituir isso na média e lembrar que q = 1-p:
+
+<N_1> = p \frac{\partial}{\partial p} (p+q)^N = p N(p+q)^{N-1} = pN
+
+Como exercício rápido, podemos ver que, para o caso do item anterior, temos:
+
+<N_1> = 60 \cdot \frac{2}{3} = 40
+
+Agora, vamos calcular o segundo momento, ou variância (que conhecemos desde a Física 1). Pra isso, precisamos saber a média dos N_1 ^2, ou seja, <N_1 ^2>. Vamos fazer o mesmo processo anterior, utilizando alguns dos mesmos resultados, começando de:
+
+<N_1 ^2> = \sum_{N_1 = 0} ^{N} \ N_1 ^2 P_N (N_1) = \sum_{N_1 = 0} ^{N} \ N_1 \left[ N_1 P_N (N_1) \right]
+<N_1 ^2> = \sum_{N_1 = 0} ^{N} \ N_1 p \frac{\partial}{\partial p} P_N (N_1)
+<N_1 ^2> = \sum_{N_1 = 0} ^{N} \ p \frac{\partial}{\partial p} \left[N_1  P_N (N_1) \right]
+<N_1 ^2> = p \frac{\partial}{\partial p} \left[\sum_{N_1 = 0} ^{N} \ p \frac{\partial}{\partial p} P_N (N_1) \right]
+<N_1 ^2> = p \frac{\partial}{\partial p} \left\{p \frac{\partial}{\partial p} \left[\sum_{N_1 = 0} ^{N} \ P_N (N_1) \right] \right\}
+<N_1 ^2> = p \frac{\partial}{\partial p} \left[p \frac{\partial}{\partial p} (p+q)^N \right]
+<N_1 ^2> = p \frac{\partial}{\partial p} \left[p N (p+q)^(N-1) \right] = p N (p+q)^(N-1) + p^2 N (N-1) (p+q)^(N-2)
+<N_1 ^2> = pN + p^2 N(N-1) = pN[1 + p(N-1)]
+
+Que ficariam menos linhas de conta caso o suporte para LaTeX do Moodle fosse um pouquinho mais completo (Inclusive, seria tão mais organizado se eu pudesse citar resultados anteriores entre as contas :c ), mas tudo bem, ainda está bonitinho.
+
+Agora podemos achar a variância:
+
+\sigma_{N_1} ^2 = <N_1 ^2> - <N_1>^2 = pN[1 + p(N-1)] - (pN)^2
+
+\sigma_{N_1} ^2 = pN + p^2 N^2 - p^2N - p^2 N^2 = pN - p^2 N
+
+\sigma_{N_1} ^2 = pN (1 - p) = Npq
+
+Vamos checar a variância para o item anterior:
+
+\sigma_{N_1} ^2 = 60 \cdot \frac{2}{3} \cdot \frac{1}{3} = 13,\bar{3}
+
+Esses valores vão ser importantes pra mostrarmos que a a Gaussiana correspondente terá essa mesma média e mesma variância. E agora, para a distribuição Gaussiana! 
+
+Vamos começar definindo uma nova função, que vai facilitar nossa vida:
+
+f(N_1) = \ln P_N (N_1) = \ln N! - \ln N_1! - \ln (N-N_1)! + N_1 \ln p + (N-N_1) \ln q  
+
+Faremos isso pois, para números grandes (que é com o que efetivamente trabalharemos em sistemas termodinâmicos, por exemplo, dentre outros) \ln varia bem mais lentamente, além de ter os convenientes de transformar produtos de números em somas, divisões em subtrações e ter uma expansão em série mais tranquila de trabalhar. Além disso, notemos que, seja N_1 = N_{max} o valor que maximiza nossa distribuição, ou seja:
+
+P_N (N') \leq P_N (N_{max})
+
+Para todo N', sendo menor no caso de N' \neq N_{max} e igual no caso de N' = N_{max}, então também ocorre que:
+max(\ln P_N) = \ln P_N (N_{max})
+
+Ou seja, o valor máximo do \ln P_N (N_1) também acontece quando N_1 = N_{max}, pois \ln é monotonicamente crescente, ou seja:
+x < y \to \ln x < \ln y
+
+Aqui eu gostaria de fazer uma pequena pausa para demonstrar uma ferramenta importante que usaremos, a aproximação de Stirling, que é dada por:
+
+N! = \left(\frac{N}{e} \right)^N \sqrt(2 \pi N)
+
+Ou ainda:
+
+\ln N! = N \ln N - N + O \left( \ln N \right)
+
+A demonstração feita pelo Silvio Salinas no livro "Introdução à Física Estatística" é bem rápida e interessante, mas eu gostaria de fazer uma outra demonstração um pouco mais rápida e mais "informal", mas que pode nos ajudar a visualizar melhor a aproximação.
+
+(Pausa para um não tão rápido comentário do autor - Lucas Pereira ou Luquinhas, eu mesmo: Gostaria de comentar também que vi algumas provas mais completas usando sequência de Wallis e outras técnicas e estudei um pouco a fundo uma delas, pois embora enormes, é interessante de observar os métodos utilizados, até se precisarmos aplicar algo parecido no futuro, mas enfim, visto que este não é o objetivo aqui, e pra não me estender demais - até porque já estou me estendendo demais - vou demonstrar dessa forma mais rápida também).
+
+Comecemos expandindo o logaritmo do fatorial:
+
+\ln N! = \ln N + \ln (N-1) + ... + \ln 2 + \ln 1 = (\ln N) \cdot 1 + [\ln (N-1)] \cdot 1 + ... + (\ln 2) \cdot 1 + (\ln 1) \cdot 1
+
+Note que essa soma funciona como se estivessemos somando a área de retângulos de base \Delta x = 1 e altura igual ao valor da função \ln x, como na imagem a seguir:
+
+Para N grande, ou seja, no limite de N \to \infty, teremos:
+
+\ln N! = \sum_{n = 1} ^{N} (\ln n) \Delta x \approx \int_{1} ^{N} \ln n dn
+\ln N! \approx \left[ n \ln n - n \right]_{1} ^{N}
+\ln N! \approx N \ln N - N + 1
+
+Como N >> 1, então:
+
+\ln N! \approx N \ln N - N
+
+Que já é bem parecida com a fórmula de stirling, com exceção do termo O \left(\ln N \right), que, para números grandes, vou mostrar que pode ser desprezado. Se transformarmos de volta, obtemos então:
+
+N! \approx \left( \frac{N}{e} \right)^N
+
+Agora vamos falar um pouco do tamanho dos números:
+
+- Um número pequeno é escrito sem acompanhamento de uma potência, ou seja, 1, 23, 379, ...
+- Um número grande é acompanhado de uma potência, como 10^{35} ou 6,02 \times 10^{23}. Um número grande, em geral, é tal que ao ser somado a um número pequeno, ele é aproximidamente igual a ele mesmo, ou seja:
+
+10^23 + 32 \approx 10^23
+
+- Um número muito grande é um número acompanhado de uma potência de um número grande, por exemplo:
+
+10^{10^{23}}
+
+Um número muito grande grande, ao ser multiplicado por um número grande, continua sendo aproximadamente igual a ele mesmo, como por exemplo:
+
+10^{10^{23}} \cdot 10^{23} = 10^{10^{23} + 23} \approx 10^{10^{23}}
+
+Agora, podemos voltar à fórmula de Stirling e reparar que, se N for grande, então N^N é muito grande. Desta forma, temos que:
+
+N^N \cdot \sqrt{N} \approx N^N
+
+O que implica em:
+\left(\frac{N}{e} \right)^N \sqrt(2 \pi N) \approx \left( \frac{N}{e} \right)^N
+
+Ou seja, para números grandes, nossa demonstração é válida com uma boa margem de erro.
+
+Agora podemos voltar à jornada em busca da Gaussiana pedida. Vamos aplicar a fórmula de Stirling em sua versão logarítmica em nossa função f (N_1), de onde vamos obter:
+
+f(N_1) = N \ln N - N - N_1 \ln N_1 + N_1 - (N-N_1) \ln (N-N_1) + (N-N_1) + N_1 \ln p + (N-N_1) \ln q + O \left( \ln N, \ln N_1 \right)
+
+f(N_1) = N \ln N - N_1 \ln N_1 - (N-N_1) \ln (N-N_1) + N_1 \ln p + (N-N_1) \ln q + O \left( \ln N, \ln N_1 \right)
+
+Vamos achar o máximo desta função, visto que é o mesmo ponto em que P_N (N_1) é máxima, para isso, claro, vamos repetir cálculo 1: Deriva e iguala a zero:
+
+\frac{\partial f}{\partial N_1} = - \ln N_1 - \frac{N_1}{N_1} + 1 + \ln (N-N_1) + \frac{N-N_1}{N-N_1} - 1 + \ln p - \ln q + O \left( \frac{1}{N} \right) = 0
+
+\frac{\partial f}{\partial N_1} = - \ln N_1 - 1 + 1 + \ln (N-N_1) + 1 - 1 + \ln p - \ln q + O \left( \frac{1}{N} \right) = 0
+
+\frac{\partial f}{\partial N_1} = - \ln N_1 + \ln (N-N_1) + \ln p - \ln q + O \left( \frac{1}{N} \right) = 0
+
+E, claro, para N grande o termo no final já pode ser desprezado, mas para chegarmos à Gaussiana, em especial, vamos assumir o limite em que N \to \infty, o que de fato aniquila aquele termo. Ficamos então com:
+
+\frac{\partial f}{\partial N_1} = - \ln N_1 + \ln (N-N_1) + \ln p - \ln q = 0
+
+\frac{\partial f}{\partial N_1} = \ln \frac{(N-N_1) p}{N_1 q} = 0
+
+Agora podemos transformar a expressão de volta:
+
+e^{\ln \frac{(N-N_1) p}{N_1 q}} = e^0
+
+\frac{(N-N_1) p}{N_1 q} = 1
+
+(N-N_1) p = N_1 q
+
+N_1q + N_1p = Np
+
+N_1 (q + p) = Np
+
+N_1 = N_{max} = Np = <N_1>
+
+Por sua vez, vamos ver o que acontece com a derivada segunda dessa função, para garantir que estamos tratando de um ponto de máximo:
+
+\frac{\partial^2 f}{\partial N_1 ^2} = - \frac{1}{N_1} - \frac{1}{N-N_1}
+
+Em N_1 = N_{max}, teremos:
+
+\frac{\partial^2 f}{\partial N_1 ^2} = - \frac{1}{Np} - \frac{1}{N-Np} = - \frac{1}{Np} - \frac{1}{N(1 - p)}
+
+\frac{\partial^2 f}{\partial N_1 ^2} = - \frac{1}{N}(\frac{1}{p} + \frac{1}{q}) = - \frac{1}{N}(\frac{q + p}{pq})
+
+\frac{\partial^2 f}{\partial N_1 ^2} = - \frac{1}{Npq} = - \frac{1}{\sigma_{N_1} ^{2}}
+
+Como \sigma_{N_1} ^2 > 0, então \frac{\partial^2 f}{\partial N_1 ^2} < 0, o que significa que esse ponto é de fato um ponto de máximo.
+
+Por fim, vamos ao grand finale! Vamos expandir nossa função em série de Taylor ao redor do ponto de máximo e ignorar os termos de ordem maior que a primeira derivada não trivial, por serem muito pequenos.
+
+f (N_1) = f(N_{max}) + \frac{\partial f}{\partial N_1} \right|_{N_1 = N_{max}} (N_1 - N_{max}) + \frac{1}{2} \frac{\partial^2 f}{\partial N_1 ^2} \right|_{N_1 = N_{max}} (N_1 - N_{max})^2 + O \left((N_1 - N_{max}\right)^3 \right)
+
+f (N_1) = \ln P(N_{max}) - \frac{1}{2 N pq} (N_1 - N_{max} \right)^2 + O \left((N_1 - N_{max} \right)^3 \right)
+
+Os termos de ordens maiores vão ser muito pequenos e podem ser neglicenciados:
+
+f (N_1) = \ln P(N_{max}) - \frac{1}{2 N pq} (N_1 - N_{max} \right)^2
+
+E agora, vamos transformar de volta:
+
+e^{f (N_1)} = e^{\ln P(N_{max}) - \frac{1}{2 N pq}}
+P_G (N_1) = e^{\ln P(N_{max})} e^{- \frac{1}{2 N pq} (N_1 - N_{max} \right)^2}
+
+P_G (N_1) = P(N_{max}) e^{- \frac{1}{2 N pq} (N_1 - N_{max} \right)^2}
+
+Vamos chamar a constante (que sim, a distribuição, para um valor fixo, é uma constante) P(N_{max}) = P_0 e fazer as devidas substituições:
+
+P_G (N_1) = P_0 e^{- \frac{(N_1 - <N_1> \right)^2}{2 \sigma_{N_1} ^2}}
+
+E assim, encontramos a Gaussiana como fora pedido. Falta apenas encontrarmos P_0. Para isso, vamos normalizar a distribuição:
+
+\int_{-\infty} ^{\infty} P_G (N_1) dN_1 = \int_{-\infty} ^{\infty} P_0 e^{- \frac{(N_1 - <N_1> \right)^2}{2 \sigma_{N_1} ^2}} dN_1 = 1
+
+Mas vamos facilitar um pouco as coisas, que tal aprendermos a integrar a seguinte função:
+
+I = \int_{-\infty} ^{\infty} A e^{-a^2u^2} du
+
+Para começar, vamos fazer: au = x \to du = \frac{dx}{a}. Temos então:
+
+I = \int_{-\infty} ^{\infty} \frac{A}{a} e^{-x^2} dx
+
+Vamos elevar essa integral ao quadrado, considerando que elas são de variáveis diferentes, teremos:
+
+I^2 = \int_{-\infty} ^{\infty} \int_{-\infty} ^{\infty} \frac{A^2}{a^2} e^{-x^2-y^2} dx dy
+
+Vamos trabalhar em coordenadas polares, onde:
+
+x = r \cos \theta \to dx \ ; \ y = r \sin \theta \ ; \ r^2 = x^2 + y^2
+
+E então, teremos:
+
+I^2 = \frac{A^2}{a^2} \int_{0} ^{\infty} \int_{0} ^{2 \pi} e^{-r^2} r dr d\theta
+
+I^2 = 2 \pi \frac{A^2}{a^2} \int_{0} ^{\infty} e^{-r^2} r dr
+
+Façamos a substituição v = r^2 -> \frac{1}{2} dv r dr, obtendo, então:
+
+I^2 = \pi \frac{A^2}{a^2} \int_{0} ^{\infty} e^{-v} dv = \pi \frac{A^2}{a^2}
+
+Portanto:
+
+I = \sqrt{\pi} \frac{A}{a}
+
+Como queremos normalizar, então:
+
+I = \sqrt{\pi} \frac{A}{a} = 1 \to A = \sqrt{\frac{a^2}{\pi}}
+
+No nosso caso, A = P_o, a = \frac{1}{2 \sigma_{N_1}}, o que nos dá:
+
+P_o = \sqrt{\frac{1}{4\pi \sigma_{N_1} ^2}} = \frac{1}{2 \sima_{N_1} ^2 \sqrt{\pi}}
+
+O que nos rende a Gaussiana:
+
+P_G (N_1) = \frac{1}{2 \sima_{N_1} ^2 \sqrt{\pi}} e^{- \frac{(N_1 - <N_1> \right)^2}{2 \sigma_{N_1} ^2}}
+
+E agora, vamos comparar o comportamento da distribuição Gaussiana com a distribuição binomial para o caso N = 60, como na imagem que segue.
+
+Podemos observar na imagem que essa aproximação é de fato muito boa, embora tenhamos assumido que ela vá funcionar bem para valores grandes como definido aqui, a distribuição Gaussiana resultante consegue cobrir quase perfeitamente o gráfico da distribuição binomial.
+
+3. Seguem imagens dos casos com N = 30 e N = 15
+
+Para N = 30 podemos ver que os erros ficam um pouco mais acentuados, mas a aproximação Gaussiana continua muito boa.
+
+Por sua vez, para N = 15, a diferença se torna bem mais acentuada, de forma que podemos ver que a Distribuição Gaussiana acaba se deslocando mais para a esquerda, em relação à distribuição binomial, além de atingir um pico um pouco mais alto.

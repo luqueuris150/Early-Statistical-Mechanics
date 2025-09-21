@@ -1,0 +1,26 @@
+Suponha o Movimento de um bêbado se movendo em uma reta a passos de comprimento constante l. Ele tem a probabilidade p de dar um passo para a direita e q de dar um passo para a esquerda. Após N passos, sendo N_1 passos para a direita e N_2 passos para a esquerda, ele vai ter percorrido uma distância ml = (N_1 - N_2)l = (2 N_1 - N)l , onde N_2 = N - N_1, sendo o sentido positivo apontando à direita. 
+
+Com isso, depois do que estudamos até aqui, sabemos que, a probabilidade de achar o bêbo na posição ml após N passos será:
+
+P_N (N_1) = \frac{N!}{N_1 ! N_2 !} p^{N_1} q^{N_2} = \frac{N!}{N_1 ! (N-N_1) !} p^{N_1} q^{N-N_1}
+
+Ok, agora consideremos dois bêbos se movendo na reta, dando passos simultâneos de mesmo comprimento constante l. Neste caso, após N passos o primeiro vai percorrer uma distância m_1 l e o segundo vai percorrer uma distância m_2 l. Dadas essas informações, pergunta-se qual a chance deles se encontrarem, ou seja, m_1 l = m_2 l.
+
+Dado o fato de que são exatas 01:05 a.m. do sábado (que pra mim ainda é sexta, visto que ainda estou acordado) e eu, Lucas, o autor dessa resposta, claramente também estou bêbo (sextou! Em casa, respeitando a quarentena, claro), vamos nos arriscar a brincar com Mecânica Estatística """"Relativística"""" (com muitas aspas, visto que na realidade não vamos usar nada de relatividade especial ou geral).
+
+Para isso, vamos pôr nosso referencial no bêbado mais legal, de forma que, do nosso ponto de vista, ele não vai se mover. Com isso, teremos a impressão de que o outro bêbo vai dar N_1 + N_2 = 2N passos e se mover uma distância ml = (m_1 - m_2)l = (N_1 - N_2)l. Neste caso, é importante notarmos que:
+
+2N + m = (N_1 - N_2) + (N_1 + N_2) = 2 N_1 \to N_1 = \frac{2N + m}{2}
+2N - m = (N_1 + N_2) - (N_1 - N_2) = 2 N_2 \to N_2 = \frac{2N - m}{2}
+
+E portanto, a probabilidade de achar o bêbo menos legal na posição ml em relação ao bêbo legal (que é claramente baseado em mim, que estou parado, sedentário, sentado aqui digitando e é por isso que prefiro adotar o meu referencial ... Ah! E minha mãe diz que eu sou legal!) vai ser:
+
+P_{2N} (m) = \frac{(2N)!}{\left(\frac{2N + m}{2}\right)! \left(\frac{2N - m}{2}\right)!} p^{\frac{2N + m}{2}} q^{\frac{2N - m}{2}}
+
+Agora voltamos às informações do exercício: Primeiramente, queremos achar a probabilidade de os dois bêbos se encontrarem. Isso ocorre quando m = m_1 - m_2 = 0. Além disso, nos foi dada a informação de que a probabilidade de dar um passo para a direita ou para a esquerda é p = q = \frac{1}{2}. Substituindo na distribuição, temos então:
+
+P_{2N} (0) = \frac{(2N)!}{\left(\frac{2N}{2}\right)! \left(\frac{2N}{2}\right)!} \left(\frac{1}{2}\right)^{\frac{2N}{2}} \left(\frac{1}{2}\right)^{\frac{2N}{2}}
+
+P_{2N} (0) = \frac{(2N)!}{(N!)^2} \left(\frac{1}{2}\right)^{N} \left(\frac{1}{2}\right)^{N}
+
+P_{2N} (0) = \frac{(2N)!}{(N!)^2} \left(\frac{1}{2}\right)^{2N}
